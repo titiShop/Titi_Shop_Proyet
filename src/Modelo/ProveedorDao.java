@@ -8,7 +8,7 @@ public class ProveedorDao {
     Connection con;
     Conexion cn = new Conexion();
     PreparedStatement ps;
-    public boolean RegistrarProveedir(Proveedor pr){
+    public boolean RegistrarProveedor(Proveedor pr){
       String sql = "INSERT INTO proveedor(rut, nombre, telefono, direccion, razon) VALUES (?,?,?,?,?)";
       try {
          con = cn.getConnection();
@@ -27,7 +27,7 @@ public class ProveedorDao {
           try{
               con.close();
           } catch (SQLException e) {
-              
+              System.out.println(e.toString());
           }
       }
   }

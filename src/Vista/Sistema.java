@@ -2,6 +2,8 @@ package Vista;
 
 import Modelo.Cliente;
 import Modelo.ClienteDao;
+import Modelo.Proveedor;
+import Modelo.ProveedorDao;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +16,8 @@ public class Sistema extends javax.swing.JFrame {
 
     Cliente cl = new Cliente();
     ClienteDao client = new ClienteDao();
+    Proveedor pr = new Proveedor();
+    ProveedorDao PrDao = new ProveedorDao();
     DefaultTableModel modelo = new DefaultTableModel();
 
     /**
@@ -175,8 +179,6 @@ public class Sistema extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 153, 255));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/Nventa.png"))); // NOI18N
         jButton1.setText("Nueva Venta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -185,8 +187,6 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/Clientes.png"))); // NOI18N
         jButton2.setText("Clientes");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -195,8 +195,6 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/proveedor.png"))); // NOI18N
         jButton3.setText("Proveedor");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -205,8 +203,6 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/producto.png"))); // NOI18N
         jButton4.setText("Productos ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -215,8 +211,6 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/compras.png"))); // NOI18N
         jButton5.setText("Ventas");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -225,8 +219,6 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/config.png"))); // NOI18N
         jButton6.setText("Config");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -384,7 +376,7 @@ public class Sistema extends javax.swing.JFrame {
                                 .addComponent(txtDireccionClienteventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtRazonClienteventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGenerarVenta)
                         .addGap(54, 54, 54)
                         .addComponent(jLabel10)
@@ -606,9 +598,27 @@ public class Sistema extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel21.setText("Razon Social :");
 
+        txtCcProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCcProveedorActionPerformed(evt);
+            }
+        });
+
         txtNombreProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreProveedorActionPerformed(evt);
+            }
+        });
+
+        txtTelefonoProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoProveedorActionPerformed(evt);
+            }
+        });
+
+        txtDireccionProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionProveedorActionPerformed(evt);
             }
         });
 
@@ -636,6 +646,11 @@ public class Sistema extends javax.swing.JFrame {
         }
 
         btnGuardarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GuardarTodo.png"))); // NOI18N
+        btnGuardarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarProveedorActionPerformed(evt);
+            }
+        });
 
         btnEditarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar (2).png"))); // NOI18N
 
@@ -1094,6 +1109,36 @@ public class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
          jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProveedorActionPerformed
+        // TODO add your handling code here:
+        if (!"".equals(txtCcProveedor.getText())
+                || !"".equals(txtNombreProveedor.getText())
+                || !"".equals(txtTelefonoProveedor.getText()) 
+                || !"".equals(txtDireccionProveedor.getText()) 
+                || !"".equals(txtRazonProveedor.getText())){
+            pr.setRut(Integer.parseInt(txtCcProveedor.getText()));
+            pr.setName(txtNombreProveedor.getText());
+            pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
+            pr.setDireccion(txtDireccionProveedor.getText());
+            pr.setRazon(txtRazonProveedor.getText());
+            PrDao.RegistrarProveedor(pr);
+        } else {
+JOptionPane.showMessageDialog(null, "Los campos estan Vacios");        }
+        
+    }//GEN-LAST:event_btnGuardarProveedorActionPerformed
+
+    private void txtCcProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCcProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCcProveedorActionPerformed
+
+    private void txtTelefonoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoProveedorActionPerformed
+
+    private void txtDireccionProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionProveedorActionPerformed
 
     /**
      * @param args the command line arguments
