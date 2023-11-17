@@ -15,8 +15,9 @@ public class ClienteDao {
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    
+    // con este metodo agregamos los clientes y se guardar en la base datos 
     public boolean RegistrarCliente(Cliente cl) {
+        //conexion con la base de datos 
         String sql = "INSERT INTO clientes ( cc, nombre, telefono, direccion,razonSocial ) VALUES (?, ?, ?, ?, ?)";
         try {
             con = cn.getConnection();
@@ -39,6 +40,8 @@ public class ClienteDao {
             }
         }
     }
+    
+    //se lista los clientes en la base de datos
     public List ListarClientes(){
         List<Cliente> ListaCl = new ArrayList();
         String sql = "SELECT * FROM clientes";
@@ -62,6 +65,8 @@ public class ClienteDao {
         }
         return ListaCl;
     }
+    
+    //eliminamos los clientes de la base de datos
     public boolean EliminarCliente (int id){
         String sql = "DELETE FROM clientes WHERE id = ?";
         try {
