@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**YOSTIN EJEMPLO
+/**YOSTIN 
  *
  * @author Titi
  */
