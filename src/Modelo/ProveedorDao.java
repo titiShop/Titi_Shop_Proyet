@@ -3,18 +3,18 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-public class ProveedorDao {
-  
+
+public class ProveedorDao {  
     Connection con;
     Conexion cn = new Conexion();
     PreparedStatement ps;
     public boolean RegistrarProveedor(Proveedor pr){
-      String sql = "INSERT INTO proveedor(rut, nombre, telefono, direccion, razon) VALUES (?,?,?,?,?)";
+      String sql = "INSERT INTO proveedor(nit, nombre, telefono, direccion, razon) VALUES (?,?,?,?,?)";
       try {
          con = cn.getConnection();
          ps = con.prepareStatement(sql);
-         ps.setInt(1, pr.getRut());
-         ps.setString(2, pr.getName());
+         ps.setInt(1, pr.getNit());
+         ps.setString(2, pr.getNombre());
          ps.setInt(3, pr.getTelefono());
          ps.setString(4, pr.getDireccion());
          ps.setString(5, pr.getRazon());

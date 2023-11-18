@@ -476,6 +476,11 @@ public class Sistema extends javax.swing.JFrame {
 
         btnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar (2).png"))); // NOI18N
         btnEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClienteActionPerformed(evt);
+            }
+        });
 
         btnEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btnEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1087,45 +1092,46 @@ public class Sistema extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         jTabbedPane1.setSelectedIndex(0);
+        jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-         jTabbedPane1.setSelectedIndex(3);
+        jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-         jTabbedPane1.setSelectedIndex(4);
+        jTabbedPane1.setSelectedIndex(4);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-         jTabbedPane1.setSelectedIndex(5);
+        jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProveedorActionPerformed
         // TODO add your handling code here:
         if (!"".equals(txtCcProveedor.getText())
                 || !"".equals(txtNombreProveedor.getText())
-                || !"".equals(txtTelefonoProveedor.getText()) 
-                || !"".equals(txtDireccionProveedor.getText()) 
-                || !"".equals(txtRazonProveedor.getText())){
-            pr.setRut(Integer.parseInt(txtCcProveedor.getText()));
-            pr.setName(txtNombreProveedor.getText());
+                || !"".equals(txtTelefonoProveedor.getText())
+                || !"".equals(txtDireccionProveedor.getText())
+                || !"".equals(txtRazonProveedor.getText())) {
+            pr.setNit(Integer.parseInt(txtCcProveedor.getText()));
+            pr.setNombre(txtNombreProveedor.getText());
             pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
             pr.setDireccion(txtDireccionProveedor.getText());
             pr.setRazon(txtRazonProveedor.getText());
             PrDao.RegistrarProveedor(pr);
         } else {
-JOptionPane.showMessageDialog(null, "Los campos estan Vacios");        }
-        
+            JOptionPane.showMessageDialog(null, "Los campos estan Vacios");
+        }
+
     }//GEN-LAST:event_btnGuardarProveedorActionPerformed
 
     private void txtCcProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCcProveedorActionPerformed
@@ -1139,6 +1145,33 @@ JOptionPane.showMessageDialog(null, "Los campos estan Vacios");        }
     private void txtDireccionProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionProveedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionProveedorActionPerformed
+
+    private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
+        // TODO add your handling code here:
+        if ("".equals(txtIdCliente.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {          
+            
+            if (!"".equals(txtCCcliente.getText())
+                    || !"".equals(txtNombreCliente.getText())
+                    || !"".equals(txtTelefonoCliente.getText())
+                    || !"".equals(txtDireccionCliente.getText())
+                    || !"".equals(txtRazonCliente.getText())) {
+            cl.setCC(Integer.parseInt(txtCCcliente.getText()));
+            cl.setNombre(txtNombreCliente.getText());
+            cl.setTelefono(Integer.parseInt(txtTelefonoCliente.getText()));
+            cl.setDireccion(txtDireccionCliente.getText());
+            cl.setRazonSocial(txtRazonCliente.getText());
+            cl.setId(Integer.parseInt(txtIdCliente.getText()));
+            client.ModificarClientes(cl);
+            LimpiarTable();
+            LimpiarCliente();
+            ListarCliente();
+          }else{
+                JOptionPane.showMessageDialog(null, "Los campos estan vacios ");
+            }                
+        }
+    }//GEN-LAST:event_btnEditarClienteActionPerformed
 
     /**
      * @param args the command line arguments

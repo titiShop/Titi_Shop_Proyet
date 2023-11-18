@@ -3,18 +3,18 @@ package Modelo;
 public class Proveedor {
 
     private int id;
-    private int rut;
-    private String name;
+    private int nit;
+    private String nombre;
     private int telefono;
     private String direccion;
     private String razon;
 
     public Proveedor() {
     }
-    public Proveedor(int id, int rut, String name, int telefono, String direccion, String razon) {
+    public Proveedor(int id, int rut, String nombre, int telefono, String direccion, String razon) {
         this.id = id;
-        this.rut = rut;
-        this.name = name;
+        this.nit = nit;
+        this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
         this.razon = razon;
@@ -28,20 +28,20 @@ public class Proveedor {
         this.id = id;
     }
 
-    public int getRut() {
-        return rut;
+    public int getNit() {
+        return nit;
     }
 
-    public void setRut(int rut) {
-        this.rut = rut;
+    public void setNit(int nit) {
+        this.nit = nit;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getTelefono() {
