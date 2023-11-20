@@ -9,6 +9,7 @@ import Modelo.ProveedorDao;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -30,6 +31,9 @@ public class Sistema extends javax.swing.JFrame {
     public Sistema() {
         initComponents();
         this.setLocationRelativeTo(null);
+       txtIdCliente.setVisible(false);
+        AutoCompleteDecorator.decorate(cbxProveedorPro);
+       proDao.ConsultarProveedor(cbxProveedorPro);
     }
 
     public void ListarCliente() {
@@ -1056,6 +1060,8 @@ public class Sistema extends javax.swing.JFrame {
             cl.setDireccion(txtDireccionCliente.getText());
             cl.setRazonSocial(txtRazonCliente.getText());
             client.RegistrarCliente(cl);
+            JOptionPane.showConfirmDialog(null,"Cliente registrado");
+
             LimpiarTable();
             LimpiarCliente();
             ListarCliente();
@@ -1092,6 +1098,9 @@ public class Sistema extends javax.swing.JFrame {
             if (pregunta == 0) {
                 int id = Integer.parseInt(txtIdCliente.getText());
                 client.EliminarCliente(id);
+               JOptionPane.showConfirmDialog(null,"Cliente eliminado");
+
+
                 LimpiarTable();
                 LimpiarCliente();
                 ListarCliente();
@@ -1110,7 +1119,8 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
+       LimpiarTable();
         jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1137,6 +1147,8 @@ public class Sistema extends javax.swing.JFrame {
             pr.setDireccion(txtDireccionProveedor.getText());
             pr.setRazon(txtRazonProveedor.getText());
             PrDao.RegistrarProveedor(pr);
+                JOptionPane.showConfirmDialog(null,"Proveedor registrado");
+
         } else {
             JOptionPane.showMessageDialog(null, "Los campos estan Vacios");
         }
@@ -1173,6 +1185,8 @@ public class Sistema extends javax.swing.JFrame {
             cl.setRazonSocial(txtRazonCliente.getText());
             cl.setId(Integer.parseInt(txtIdCliente.getText()));
             client.ModificarClientes(cl);
+            JOptionPane.showConfirmDialog(null,"Cliente modificado");
+
             LimpiarTable();
             LimpiarCliente();
             ListarCliente();
@@ -1193,6 +1207,7 @@ public class Sistema extends javax.swing.JFrame {
     pro.setStock(Integer.parseInt(txtCantPro.getText()));
     pro.setPrecio(Double.parseDouble(txtPrecPro.getText()));
     proDao.RegistrarProductos(pro.getCodigo(), pro.getNombre(), pro.getProveedor(), pro.getStock(), pro.getPrecio());
+    JOptionPane.showConfirmDialog(null,"Productos registrado");
 
     }   
     else {JOptionPane.showMessageDialog(null,"Los campos estan vacio");{}}
