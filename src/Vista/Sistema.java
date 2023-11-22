@@ -602,7 +602,7 @@ public class Sistema extends javax.swing.JFrame {
         jTabbedPane1.addTab("Clientes", jPanel3);
 
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel17.setText("CC/NIT :");
+        jLabel17.setText("NIT :");
 
         jLabel18.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel18.setText("Nombre :");
@@ -651,7 +651,7 @@ public class Sistema extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CC/NIT", "NOMBRE", "TELEFONO", "DIRECCION", "RAZON SOCIAL"
+                "NIT", "NOMBRE", "TELEFONO", "DIRECCION", "RAZON SOCIAL"
             }
         ));
         jScrollPane3.setViewportView(tableproveedor);
@@ -1150,7 +1150,7 @@ public class Sistema extends javax.swing.JFrame {
             pr.setNombre(txtNombreProveedor.getText());
             pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
             pr.setDireccion(txtDireccionProveedor.getText());
-            pr.setRazon(txtRazonProveedor.getText());
+            pr.setRazonSocial(txtRazonProveedor.getText());
             PrDao.RegistrarProveedor(pr);
                 JOptionPane.showConfirmDialog(null,"Proveedor registrado");
 

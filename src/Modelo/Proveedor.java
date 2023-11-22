@@ -7,17 +7,18 @@ public class Proveedor {
     private String nombre;
     private int telefono;
     private String direccion;
-    private String razon;
+    private String razonSocial;
 
     public Proveedor() {
     }
-    public Proveedor(int id, int rut, String nombre, int telefono, String direccion, String razon) {
+
+    public Proveedor(int id, int nit, String nombre, int telefono, String direccion, String razonSocial) {
         this.id = id;
         this.nit = nit;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.razon = razon;
+        this.razonSocial = razonSocial;
     }
 
     public int getId() {
@@ -60,12 +61,12 @@ public class Proveedor {
         this.direccion = direccion;
     }
 
-    public String getRazon() {
-        return razon;
+    public String getRazonSocial() {
+        return razonSocial;
     }
 
-    public void setRazon(String razon) {
-        this.razon = razon;
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
     }
-
+    
 }
