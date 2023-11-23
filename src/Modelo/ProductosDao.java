@@ -1,16 +1,11 @@
 package Modelo;
 
-<<<<<<< Updated upstream
 import java.sql.PreparedStatement;
 import java.sql.Connection; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
 
-=======
-import com.sun.jdi.connect.spi.Connection;
-import java.sql.PreparedStatement;
->>>>>>> Stashed changes
 /**
  *
  * @author aleiz
@@ -18,7 +13,6 @@ import java.sql.PreparedStatement;
 public class ProductosDao {
     Connection con;
     Conexion cn = new Conexion();
-<<<<<<< Updated upstream
     PreparedStatement ps;
     ResultSet rs;
 
@@ -67,12 +61,6 @@ public class ProductosDao {
         }
     
     }
-=======
-    PreparedStatement ps ;
-    
-    public boolean RegistrarProductos (){
-    String sql = "INSERT INTO productos(codigo,nombre,proveedor,stock,precio) VALUES (?,?,?,?,?) "; }
->>>>>>> Stashed changes
     
 }
   
