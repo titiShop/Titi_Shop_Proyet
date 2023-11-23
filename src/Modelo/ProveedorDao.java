@@ -63,7 +63,7 @@ public class ProveedorDao {
     }
 
     public boolean EliminarProveedor(int id) {
-        String sql = "DELATE FROM proveedor WHERE id = ?";
+        String sql = "DELETE FROM proveedor WHERE id = ?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
