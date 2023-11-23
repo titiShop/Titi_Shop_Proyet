@@ -1187,7 +1187,7 @@ public class Sistema extends javax.swing.JFrame {
                 || !"".equals(txtRazonProveedor.getText())) {
             pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
             pr.setNombre(txtNombreProveedor.getText());
-            pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
+            pr.setTelefono(txtTelefonoProveedor.getText());
             pr.setDireccion(txtDireccionProveedor.getText());
             pr.setRazonSocial(txtRazonProveedor.getText());
             PrDao.RegistrarProveedor(pr);
@@ -1292,7 +1292,7 @@ public class Sistema extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No hay fila para eliminar");
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
         }
     }//GEN-LAST:event_btnEliminarProveedorActionPerformed
 
@@ -1308,7 +1308,7 @@ public class Sistema extends javax.swing.JFrame {
                     || !"".equals(txtRazonProveedor.getText())) {
                 pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
                 pr.setNombre(txtNombreProveedor.getText());
-                pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
+                pr.setTelefono(txtTelefonoProveedor.getText());
                 pr.setDireccion(txtDireccionProveedor.getText());
                 pr.setRazonSocial(txtRazonProveedor.getText());
                 pr.setId(Integer.parseInt(txtIdProveedor.getText()));

@@ -21,7 +21,7 @@ public class ProveedorDao {
             ps = con.prepareStatement(sql);
             ps.setInt(1, pr.getNit());
             ps.setString(2, pr.getNombre());
-            ps.setInt(3, pr.getTelefono());
+            ps.setString(3, pr.getTelefono());
             ps.setString(4, pr.getDireccion());
             ps.setString(5, pr.getRazonSocial());
             ps.execute();
@@ -50,7 +50,7 @@ public class ProveedorDao {
                 pr.setId(rs.getInt("id"));
                 pr.setNit(rs.getInt("nit"));
                 pr.setNombre(rs.getString("nombre"));
-                pr.setTelefono(rs.getInt("telefono"));
+                pr.setTelefono(rs.getString("telefono"));
                 pr.setDireccion(rs.getString("direccion"));
                 pr.setRazonSocial(rs.getString("razonSocial"));
                 Listapr.add(pr);
@@ -89,7 +89,7 @@ public class ProveedorDao {
             ps = con.prepareStatement(sql);
             ps.setInt(1, pr.getNit());
             ps.setString(2, pr.getNombre());
-            ps.setInt(3, pr.getTelefono());
+            ps.setString(3, pr.getTelefono());
             ps.setString(4, pr.getDireccion());
             ps.setString(5, pr.getRazonSocial());
             ps.setInt(6, pr.getId());
