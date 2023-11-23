@@ -1198,7 +1198,7 @@ public class Sistema extends javax.swing.JFrame {
                 || !"".equals(txtTelefonoProveedor.getText())
                 || !"".equals(txtDireccionProveedor.getText())
                 || !"".equals(txtRazonProveedor.getText())) {
-            pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
+            pr.setNit(txtNitProveedor.getText());
             pr.setNombre(txtNombreProveedor.getText());
             pr.setTelefono(txtTelefonoProveedor.getText());
             pr.setDireccion(txtDireccionProveedor.getText());
@@ -1319,7 +1319,7 @@ public class Sistema extends javax.swing.JFrame {
                     || !"".equals(txtTelefonoProveedor.getText())
                     || !"".equals(txtDireccionProveedor.getText())
                     || !"".equals(txtRazonProveedor.getText())) {
-                pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
+                pr.setNit(txtNitProveedor.getText());
                 pr.setNombre(txtNombreProveedor.getText());
                 pr.setTelefono(txtTelefonoProveedor.getText());
                 pr.setDireccion(txtDireccionProveedor.getText());

@@ -3,7 +3,7 @@ package Modelo;
 public class Proveedor {
 
     private int id;
-    private int nit;
+    private String nit;
     private String nombre;
     private String telefono;
     private String direccion;
@@ -12,7 +12,7 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int id, int nit, String nombre, String telefono, String direccion, String razonSocial) {
+    public Proveedor(int id, String nit, String nombre, String telefono, String direccion, String razonSocial) {
         this.id = id;
         this.nit = nit;
         this.nombre = nombre;
@@ -29,11 +29,11 @@ public class Proveedor {
         this.id = id;
     }
 
-    public int getNit() {
+    public String getNit() {
         return nit;
     }
 
-    public void setNit(int nit) {
+    public void setNit(String nit) {
         this.nit = nit;
     }
 
