@@ -150,7 +150,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        txtCcProveedor = new javax.swing.JTextField();
+        txtNitProveedor = new javax.swing.JTextField();
         txtNombreProveedor = new javax.swing.JTextField();
         txtTelefonoProveedor = new javax.swing.JTextField();
         txtDireccionProveedor = new javax.swing.JTextField();
@@ -634,9 +634,9 @@ public class Sistema extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel21.setText("Razon Social :");
 
-        txtCcProveedor.addActionListener(new java.awt.event.ActionListener() {
+        txtNitProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCcProveedorActionPerformed(evt);
+                txtNitProveedorActionPerformed(evt);
             }
         });
 
@@ -732,7 +732,7 @@ public class Sistema extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(txtCcProveedor)
+                                .addComponent(txtNitProveedor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31))
@@ -766,7 +766,7 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(txtCcProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNitProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1180,12 +1180,12 @@ public class Sistema extends javax.swing.JFrame {
 
     private void btnGuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProveedorActionPerformed
         // TODO add your handling code here:
-        if (!"".equals(txtCcProveedor.getText())
+        if (!"".equals(txtNitProveedor.getText())
                 || !"".equals(txtNombreProveedor.getText())
                 || !"".equals(txtTelefonoProveedor.getText())
                 || !"".equals(txtDireccionProveedor.getText())
                 || !"".equals(txtRazonProveedor.getText())) {
-            pr.setNit(Integer.parseInt(txtCcProveedor.getText()));
+            pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
             pr.setNombre(txtNombreProveedor.getText());
             pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
             pr.setDireccion(txtDireccionProveedor.getText());
@@ -1202,9 +1202,9 @@ public class Sistema extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnGuardarProveedorActionPerformed
 
-    private void txtCcProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCcProveedorActionPerformed
+    private void txtNitProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNitProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCcProveedorActionPerformed
+    }//GEN-LAST:event_txtNitProveedorActionPerformed
 
     private void txtTelefonoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoProveedorActionPerformed
         // TODO add your handling code here:
@@ -1271,7 +1271,7 @@ public class Sistema extends javax.swing.JFrame {
     private void tableproveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableproveedorMouseClicked
         int fila = tableproveedor.rowAtPoint(evt.getPoint());
         txtIdProveedor.setText(tableproveedor.getValueAt(fila, 0).toString());
-        txtCcProveedor.setText(tableproveedor.getValueAt(fila, 1).toString());
+        txtNitProveedor.setText(tableproveedor.getValueAt(fila, 1).toString());
         txtNombreProveedor.setText(tableproveedor.getValueAt(fila, 2).toString());
         txtTelefonoProveedor.setText(tableproveedor.getValueAt(fila, 3).toString());
         txtDireccionProveedor.setText(tableproveedor.getValueAt(fila, 4).toString());
@@ -1280,53 +1280,51 @@ public class Sistema extends javax.swing.JFrame {
     }//GEN-LAST:event_tableproveedorMouseClicked
 
     private void btnEliminarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProveedorActionPerformed
-       if (!"".equals(txtIdProveedor.getText())){
-           int pregunta = JOptionPane.showConfirmDialog(null, "Estas seguro de eliminar");
-           if (pregunta == 0){
-               int id = Integer.parseInt(txtIdProveedor.getText());
-               PrDao.EliminarProveedor(id);
-               LimpiarTable();
-               ListarProveedor();
-               LimpiarProveedor();
-           }
-           else{
-               JOptionPane.showMessageDialog(null, "Seleccione una fila");
-           }
-       }
-       else{
+        if (!"".equals(txtIdProveedor.getText())) {
+            int pregunta = JOptionPane.showConfirmDialog(null, "Estas seguro de eliminar");
+            if (pregunta == 0) {
+                int id = Integer.parseInt(txtIdProveedor.getText());
+                PrDao.EliminarProveedor(id);
+                LimpiarTable();
+                ListarProveedor();
+                LimpiarProveedor();
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila");
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "No hay fila para eliminar");
-       }
+        }
     }//GEN-LAST:event_btnEliminarProveedorActionPerformed
 
     private void btnEditarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProveedorActionPerformed
         // TODO add your handling code here:
-        if ("".equals(txtIdProveedor.getText())){
-               JOptionPane.showMessageDialog(null, "Seleccione una fila");
-       }else{
-            if (!"".equals(txtCcProveedor.getText())
-                || !"".equals(txtNombreProveedor.getText())
-                || !"".equals(txtTelefonoProveedor.getText())
-                || !"".equals(txtDireccionProveedor.getText())
-                || !"".equals(txtRazonProveedor.getText())) {
-            pr.setNit(Integer.parseInt(txtCcProveedor.getText()));
-            pr.setNombre(txtNombreProveedor.getText());
-            pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
-            pr.setDireccion(txtDireccionProveedor.getText());
-            pr.setRazonSocial(txtRazonProveedor.getText());
-            pr.setId(Integer.parseInt(txtIdProveedor.getText()));
-            PrDao.ModificarProveedor(pr);
-            LimpiarTable();
-            ListarProveedor();
-            LimpiarProveedor(); 
-    }
-    }
+        if ("".equals(txtIdProveedor.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+            if (!"".equals(txtNitProveedor.getText())
+                    || !"".equals(txtNombreProveedor.getText())
+                    || !"".equals(txtTelefonoProveedor.getText())
+                    || !"".equals(txtDireccionProveedor.getText())
+                    || !"".equals(txtRazonProveedor.getText())) {
+                pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
+                pr.setNombre(txtNombreProveedor.getText());
+                pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
+                pr.setDireccion(txtDireccionProveedor.getText());
+                pr.setRazonSocial(txtRazonProveedor.getText());
+                pr.setId(Integer.parseInt(txtIdProveedor.getText()));
+                PrDao.ModificarProveedor(pr);
+                LimpiarTable();
+                ListarProveedor();
+                LimpiarProveedor();
+            }
+        }
     }//GEN-LAST:event_btnEditarProveedorActionPerformed
 
     private void btnNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProveedorActionPerformed
         // TODO add your handling code here:
         LimpiarProveedor();
     }//GEN-LAST:event_btnNuevoProveedorActionPerformed
-      
+
     /**
      * @param args the command line arguments
      */
@@ -1448,7 +1446,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtCCventa;
     private javax.swing.JTextField txtCantPro;
     private javax.swing.JTextField txtCantidadVenta;
-    private javax.swing.JTextField txtCcProveedor;
     private javax.swing.JTextField txtCodigoPro;
     private javax.swing.JTextField txtCodigoVenta;
     private javax.swing.JTextField txtDesPro;
@@ -1460,6 +1457,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdPro;
     private javax.swing.JTextField txtIdProveedor;
     private javax.swing.JTextField txtIdVenta;
+    private javax.swing.JTextField txtNitProveedor;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtNombreClienteventa;
     private javax.swing.JTextField txtNombreProveedor;
@@ -1483,12 +1481,13 @@ private void LimpiarCliente() {
         txtRazonCliente.setText("");
 
     }
-private void LimpiarProveedor() {
+
+    private void LimpiarProveedor() {
         txtIdProveedor.setText("");
-        txtCcProveedor.setText("");
+        txtNitProveedor.setText("");
         txtNombreProveedor.setText("");
         txtTelefonoProveedor.setText("");
         txtDireccionProveedor.setText("");
         txtRazonProveedor.setText("");
-}
+    }
 }

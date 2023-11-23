@@ -804,7 +804,7 @@
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="txtCcProveedor" max="32767" attributes="0"/>
+                                      <Component id="txtNitProveedor" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="txtIdProveedor" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -850,7 +850,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCcProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNitProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtIdProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -931,9 +931,9 @@
                 <Property name="text" type="java.lang.String" value="Razon Social :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCcProveedor">
+            <Component class="javax.swing.JTextField" name="txtNitProveedor">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCcProveedorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNitProveedorActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreProveedor">

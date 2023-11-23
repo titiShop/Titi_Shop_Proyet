@@ -40,7 +40,7 @@ public class ProveedorDao {
 
     public List ListarProveedor() {
         List<Proveedor> Listapr = new ArrayList();
-        String sql = "SELECT * FROM PROVEEDOR";
+        String sql = "SELECT * FROM proveedor";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class ProveedorDao {
     }
 
     public boolean EliminarProveedor(int id) {
-        String sql = "DELATE FROM proveedor WHERE id = ?";
+        String sql = "DELETE FROM proveedor WHERE id = ?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -83,7 +83,7 @@ public class ProveedorDao {
     }
 
     public boolean ModificarProveedor(Proveedor pr) {
-        String sql = "UPDATE proveedor SET nit=?, telefono=?, direccion=?, razon=? WHERE id=? ";
+        String sql = "UPDATE proveedor SET nit=?, telefono=?, direccion=?, razonSocial=? WHERE id=? ";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -92,7 +92,7 @@ public class ProveedorDao {
             ps.setInt(3, pr.getTelefono());
             ps.setString(4, pr.getDireccion());
             ps.setString(5, pr.getRazonSocial());
-            ps.setInt(6, pr.getId());
+            //ps.setInt(6, pr.getId());
             ps.execute();
             return true;
         } catch (SQLException e) {

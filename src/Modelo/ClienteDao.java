@@ -88,15 +88,16 @@ public class ClienteDao {
 
     // actualizar los clientes en la base de datos 
     public boolean ModificarClientes(Cliente cl) {
-        String sql = "UPDATE clientes SET cc = ? , nombre = ?, telefono = ?, direccion = ?, razonSocial = ?, WHERE id = ? ";
+        String sql = "UPDATE clientes SET cc = ? , nombre = ?, telefono = ?, direccion = ?, razonSocial = ?, WHERE id = 1";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, cl.getCC());
-            ps.setString(2, cl.getNombre());
-            ps.setInt(3, cl.getTelefono());
-            ps.setString(4, cl.getDireccion());
-            ps.setString(5, cl.getRazonSocial());
-            ps.setInt(6, cl.getId());
+            ps.setInt(1, cl.getId());
+            ps.setInt(2, cl.getCC());
+            ps.setString(3, cl.getNombre());
+            ps.setInt(4, cl.getTelefono());
+            ps.setString(5, cl.getDireccion());
+            ps.setString(6, cl.getRazonSocial());
+            
             ps.execute();
             return true;
         } catch (SQLException e) {
