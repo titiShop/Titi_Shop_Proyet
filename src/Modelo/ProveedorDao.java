@@ -83,7 +83,7 @@ public class ProveedorDao {
     }
 
     public boolean ModificarProveedor(Proveedor pr) {
-        String sql = "UPDATE proveedor SET nit=?, telefono=?, direccion=?, razonSocial=? WHERE id=? ";
+        String sql = "UPDATE proveedor SET nit=?, nombre=?, telefono=?, direccion=?, razonSocial=? WHERE id=? ";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -92,7 +92,7 @@ public class ProveedorDao {
             ps.setInt(3, pr.getTelefono());
             ps.setString(4, pr.getDireccion());
             ps.setString(5, pr.getRazonSocial());
-            //ps.setInt(6, pr.getId());
+            ps.setInt(6, pr.getId());
             ps.execute();
             return true;
         } catch (SQLException e) {

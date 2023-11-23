@@ -1194,7 +1194,7 @@ public class Sistema extends javax.swing.JFrame {
             LimpiarTable();
             ListarProveedor();
             LimpiarProveedor();
-            JOptionPane.showConfirmDialog(null, "Proveedor registrado");
+            JOptionPane.showMessageDialog(null, "Proveedor registrado");
 
         } else {
             JOptionPane.showMessageDialog(null, "Los campos estan Vacios");
