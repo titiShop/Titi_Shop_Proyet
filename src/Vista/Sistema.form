@@ -644,6 +644,9 @@
             <Component class="javax.swing.JTextField" name="txtNombreCliente">
             </Component>
             <Component class="javax.swing.JTextField" name="txtTelefonoCliente">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonoClienteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDireccionCliente">
             </Component>
@@ -775,6 +778,9 @@
             <Component class="javax.swing.JTextField" name="txtRazonCliente">
             </Component>
             <Component class="javax.swing.JTextField" name="txtIdCliente">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdClienteActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

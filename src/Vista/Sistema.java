@@ -32,6 +32,7 @@ public class Sistema extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         txtIdCliente.setVisible(false);
+        txtIdProveedor.setVisible(false);  
         AutoCompleteDecorator.decorate(cbxProveedorPro);
         proDao.ConsultarProveedor(cbxProveedorPro);
     }
@@ -469,6 +470,12 @@ public class Sistema extends javax.swing.JFrame {
 
         jLabel16.setText("Rozon Socila:");
 
+        txtTelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoClienteActionPerformed(evt);
+            }
+        });
+
         tableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -526,6 +533,12 @@ public class Sistema extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel11.setText("Razon Social :");
+
+        txtIdCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1100,7 +1113,7 @@ public class Sistema extends javax.swing.JFrame {
 
             cl.setCC(Integer.parseInt(txtCCcliente.getText()));
             cl.setNombre(txtNombreCliente.getText());
-            cl.setTelefono((int) Long.parseLong(txtTelefonoCliente.getText()));
+          cl.setTelefono(txtTelefonoCliente.getText());
             cl.setDireccion(txtDireccionCliente.getText());
             cl.setRazonSocial(txtRazonCliente.getText());
             client.RegistrarCliente(cl);
@@ -1185,9 +1198,9 @@ public class Sistema extends javax.swing.JFrame {
                 || !"".equals(txtTelefonoProveedor.getText())
                 || !"".equals(txtDireccionProveedor.getText())
                 || !"".equals(txtRazonProveedor.getText())) {
-            pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
+            pr.setNit(txtNitProveedor.getText());
             pr.setNombre(txtNombreProveedor.getText());
-            pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
+            pr.setTelefono(txtTelefonoProveedor.getText());
             pr.setDireccion(txtDireccionProveedor.getText());
             pr.setRazonSocial(txtRazonProveedor.getText());
             PrDao.RegistrarProveedor(pr);
@@ -1227,7 +1240,7 @@ public class Sistema extends javax.swing.JFrame {
                     || !"".equals(txtRazonCliente.getText())) {
                 cl.setCC(Integer.parseInt(txtCCcliente.getText()));
                 cl.setNombre(txtNombreCliente.getText());
-                cl.setTelefono(Integer.parseInt(txtTelefonoCliente.getText()));
+                cl.setTelefono(txtTelefonoCliente.getText());
                 cl.setDireccion(txtDireccionCliente.getText());
                 cl.setRazonSocial(txtRazonCliente.getText());
                 cl.setId(Integer.parseInt(txtIdCliente.getText()));
@@ -1262,7 +1275,7 @@ public class Sistema extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnGuardarproActionPerformed
-
+   
     private void btnNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoClienteActionPerformed
         // TODO add your handling code here:
         LimpiarCliente();
@@ -1292,7 +1305,7 @@ public class Sistema extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No hay fila para eliminar");
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
         }
     }//GEN-LAST:event_btnEliminarProveedorActionPerformed
 
@@ -1306,9 +1319,9 @@ public class Sistema extends javax.swing.JFrame {
                     || !"".equals(txtTelefonoProveedor.getText())
                     || !"".equals(txtDireccionProveedor.getText())
                     || !"".equals(txtRazonProveedor.getText())) {
-                pr.setNit(Integer.parseInt(txtNitProveedor.getText()));
+                pr.setNit(txtNitProveedor.getText());
                 pr.setNombre(txtNombreProveedor.getText());
-                pr.setTelefono(Integer.parseInt(txtTelefonoProveedor.getText()));
+                pr.setTelefono(txtTelefonoProveedor.getText());
                 pr.setDireccion(txtDireccionProveedor.getText());
                 pr.setRazonSocial(txtRazonProveedor.getText());
                 pr.setId(Integer.parseInt(txtIdProveedor.getText()));
@@ -1324,6 +1337,14 @@ public class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         LimpiarProveedor();
     }//GEN-LAST:event_btnNuevoProveedorActionPerformed
+
+    private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdClienteActionPerformed
+
+    private void txtTelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoClienteActionPerformed
 
     /**
      * @param args the command line arguments
