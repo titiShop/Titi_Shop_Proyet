@@ -6,7 +6,11 @@ import Modelo.Productos;
 import Modelo.ProductosDao;
 import Modelo.Proveedor;
 import Modelo.ProveedorDao;
+import Modelo.Venta;
+import Modelo.VentaDAO;
 import Reportes.Excel;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +28,10 @@ public class Sistema extends javax.swing.JFrame {
     ProveedorDao PrDao = new ProveedorDao();
     Productos pro = new Productos();
     ProductosDao proDao = new ProductosDao();
+    Venta v = new Venta();
+    VentaDAO VDAO = new VentaDAO();
     DefaultTableModel modelo = new DefaultTableModel();
+    int item;
 
     /**
      * Creates new form Sistema
@@ -33,7 +40,7 @@ public class Sistema extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         txtIdCliente.setVisible(false);
-        txtIdProveedor.setVisible(false);  
+        txtIdProveedor.setVisible(false);
         AutoCompleteDecorator.decorate(cbxProveedorPro);
         proDao.ConsultarProveedor(cbxProveedorPro);
     }
@@ -117,7 +124,8 @@ public class Sistema extends javax.swing.JFrame {
         btnVentas = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        LabelVendedor = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -306,15 +314,23 @@ public class Sistema extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(btnVentas)
                 .addGap(26, 26, 26)
+<<<<<<< Updated upstream
                 .addComponent(btnConfig)
                 .addContainerGap(173, Short.MAX_VALUE))
+=======
+                .addComponent(jButton6)
+                .addContainerGap(179, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 760));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/3.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 890, 180));
+        jLabel33.setText("VENDEDOR");
+        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+
+        LabelVendedor.setBackground(new java.awt.Color(255, 255, 255));
+        LabelVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoseditable/Img/3.png"))); // NOI18N
+        getContentPane().add(LabelVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 900, 180));
 
         jLabel3.setText("Codigo");
 
@@ -331,6 +347,12 @@ public class Sistema extends javax.swing.JFrame {
         btnEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarVentaActionPerformed(evt);
+            }
+        });
+
+        txtCantidadVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCantidadVentaKeyPressed(evt);
             }
         });
 
@@ -1137,6 +1159,9 @@ public class Sistema extends javax.swing.JFrame {
 
     private void btnEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaActionPerformed
         // TODO add your handling code here:
+        modelo = (DefaultTableModel) tableventa.getModel();
+        modelo.removeRow(tableventa.getSelectedRow());               
+        
     }//GEN-LAST:event_btnEliminarVentaActionPerformed
 
     private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
@@ -1148,7 +1173,7 @@ public class Sistema extends javax.swing.JFrame {
 
             cl.setCC(Integer.parseInt(txtCCcliente.getText()));
             cl.setNombre(txtNombreCliente.getText());
-          cl.setTelefono(txtTelefonoCliente.getText());
+            cl.setTelefono(txtTelefonoCliente.getText());
             cl.setDireccion(txtDireccionCliente.getText());
             cl.setRazonSocial(txtRazonCliente.getText());
             client.RegistrarCliente(cl);
@@ -1311,7 +1336,7 @@ public class Sistema extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnGuardarproActionPerformed
-   
+
     private void btnNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoClienteActionPerformed
         // TODO add your handling code here:
         LimpiarCliente();
@@ -1387,6 +1412,7 @@ public class Sistema extends javax.swing.JFrame {
         Excel.reporte();
     }//GEN-LAST:event_btnExcelProActionPerformed
 
+<<<<<<< Updated upstream
     private void tableProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductoMouseClicked
         // TODO add your handling code here:
         int fila = tableProducto.rowAtPoint(evt.getPoint());
@@ -1414,6 +1440,46 @@ public class Sistema extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnEliminarProActionPerformed
+=======
+    private void txtCantidadVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVentaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (!"".equals(txtCantidadVenta.getText())) {
+                String cod = txtCodigoVenta.getText();
+                String descripcion = txtDescripcionVenta.getText();
+                int cant = Integer.parseInt(txtCantidadVenta.getText());
+                double precio = Double.parseDouble(txtPrecioVenta.getText());
+                double total = cant * precio;
+                int stock = Integer.parseInt(txtStockDisponible.getText());
+                if (stock >= cant) {
+                    item = item + 1;
+                    modelo = (DefaultTableModel) tableventa.getModel();
+                    ArrayList lista = new ArrayList();
+                    lista.add(item);
+                    lista.add(cod);
+                    lista.add(descripcion);
+                    lista.add(cant);
+                    lista.add(precio);
+                    lista.add(total);
+                    Object[] o = new Object[5];
+                    o[0] = lista.get(1);
+                    o[1] = lista.get(2);
+                    o[2] = lista.get(3);
+                    o[3] = lista.get(4);
+                    o[4] = lista.get(5);
+                    o[5] = lista.get(6);
+                    modelo.addRow(o);
+                    tableventa.setModel(modelo);
+                }else {
+                    JOptionPane.showMessageDialog(null, "Stock no disponible");
+                } 
+            }else{
+                JOptionPane.showMessageDialog(null, "Ingrese cantidad");
+            }
+
+        }
+    }//GEN-LAST:event_txtCantidadVentaKeyPressed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -1452,6 +1518,7 @@ public class Sistema extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelTotal;
+    private javax.swing.JLabel LabelVendedor;
     private javax.swing.JTable TableVentas;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConfig;
@@ -1477,7 +1544,14 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton btnVentas;
     private javax.swing.JComboBox<String> cbxProveedorPro;
     private javax.swing.JButton jButton23;
+<<<<<<< Updated upstream
     private javax.swing.JLabel jLabel1;
+=======
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+>>>>>>> Stashed changes
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1503,6 +1577,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1580,6 +1655,7 @@ private void LimpiarCliente() {
         txtDireccionProveedor.setText("");
         txtRazonProveedor.setText("");
     }
+<<<<<<< Updated upstream
      private void LimpiarProductos() {
         txtIdPro.setText("");
         txtCodigoPro.setText("");
@@ -1587,6 +1663,12 @@ private void LimpiarCliente() {
         txtDesPro.setText("");
         txtCantPro.setText("");
         txtPrecPro.setText("");
+=======
+
+    private void RegistrarVenta() {
+        String cliente = txtNombreClienteventa.getText();
+        String vendedor = LabelVendedor.getText();
+>>>>>>> Stashed changes
     }
 }
 
