@@ -1,6 +1,5 @@
 package Reportes;
 
-
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,28 +33,32 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
- 
+
 public class Excel {
+    // Método principal para generar el informe en Excel
     public static void reporte() {
- 
+
+        // Crear un nuevo libro de Excel y una hoja llamada "Productos"
         Workbook book = new XSSFWorkbook();
         Sheet sheet = book.createSheet("Productos");
- 
+
         try {
+            // Leer la imagen del logo desde el archivo
             InputStream is = new FileInputStream("src/img/logo.png");
             byte[] bytes = IOUtils.toByteArray(is);
             int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
             is.close();
- 
+
+            // Configurar el logo en la hoja de Excel
             CreationHelper help = book.getCreationHelper();
             Drawing draw = sheet.createDrawingPatriarch();
- 
             ClientAnchor anchor = help.createClientAnchor();
             anchor.setCol1(0);
             anchor.setRow1(1);
             Picture pict = draw.createPicture(anchor, imgIndex);
             pict.resize(1, 3);
- 
+
+            // Estilo para el título
             CellStyle tituloEstilo = book.createCellStyle();
             tituloEstilo.setAlignment(HorizontalAlignment.CENTER);
             tituloEstilo.setVerticalAlignment(VerticalAlignment.CENTER);
@@ -64,16 +67,20 @@ public class Excel {
             fuenteTitulo.setBold(true);
             fuenteTitulo.setFontHeightInPoints((short) 14);
             tituloEstilo.setFont(fuenteTitulo);
- 
+
+            // Crear la fila del título en la hoja
             Row filaTitulo = sheet.createRow(1);
             Cell celdaTitulo = filaTitulo.createCell(1);
             celdaTitulo.setCellStyle(tituloEstilo);
             celdaTitulo.setCellValue("Reporte de Productos");
- 
+
+            // Fusionar celdas para el título
             sheet.addMergedRegion(new CellRangeAddress(1, 2, 1, 3));
- 
-            String[] cabecera = new String[]{"Código", "Nombre", "Precio", "Existencia"};
- 
+
+            // Cabecera de la tabla
+            String[] cabecera = new String[]{"Código", "Nombre", "Precio", "Stock"};
+
+            // Estilo para la cabecera
             CellStyle headerStyle = book.createCellStyle();
             headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
             headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
@@ -81,74 +88,90 @@ public class Excel {
             headerStyle.setBorderLeft(BorderStyle.THIN);
             headerStyle.setBorderRight(BorderStyle.THIN);
             headerStyle.setBorderBottom(BorderStyle.THIN);
- 
+
+            // Configuración de la fuente para la cabecera
             Font font = book.createFont();
             font.setFontName("Arial");
             font.setBold(true);
             font.setColor(IndexedColors.WHITE.getIndex());
             font.setFontHeightInPoints((short) 12);
             headerStyle.setFont(font);
- 
+
+            // Crear la fila de encabezados en la hoja
             Row filaEncabezados = sheet.createRow(4);
- 
+
+            // Llenar la fila de encabezados con los nombres de las columnas
             for (int i = 0; i < cabecera.length; i++) {
                 Cell celdaEnzabezado = filaEncabezados.createCell(i);
                 celdaEnzabezado.setCellStyle(headerStyle);
                 celdaEnzabezado.setCellValue(cabecera[i]);
             }
- 
+
+            // Conectar a la base de datos y obtener los datos
             Conexion con = new Conexion();
             PreparedStatement ps;
             ResultSet rs;
             Connection conn = con.getConnection();
- 
+
+            // Configuración para el estilo de los datos en la tabla
             int numFilaDatos = 5;
- 
             CellStyle datosEstilo = book.createCellStyle();
             datosEstilo.setBorderBottom(BorderStyle.THIN);
             datosEstilo.setBorderLeft(BorderStyle.THIN);
             datosEstilo.setBorderRight(BorderStyle.THIN);
             datosEstilo.setBorderBottom(BorderStyle.THIN);
- 
+
+            // Consultar la base de datos para obtener los datos de productos
             ps = conn.prepareStatement("SELECT codigo, nombre, precio, stock FROM productos");
             rs = ps.executeQuery();
- 
+
+            // Obtener el número de columnas en el resultado de la consulta
             int numCol = rs.getMetaData().getColumnCount();
- 
+
+            // Llenar la hoja de Excel con los datos de la base de datos
             while (rs.next()) {
                 Row filaDatos = sheet.createRow(numFilaDatos);
- 
+
                 for (int a = 0; a < numCol; a++) {
- 
                     Cell CeldaDatos = filaDatos.createCell(a);
                     CeldaDatos.setCellStyle(datosEstilo);
                     CeldaDatos.setCellValue(rs.getString(a + 1));
                 }
- 
- 
+
                 numFilaDatos++;
             }
+
+            // Ajustar automáticamente el ancho de las columnas
             sheet.autoSizeColumn(0);
             sheet.autoSizeColumn(1);
             sheet.autoSizeColumn(2);
             sheet.autoSizeColumn(3);
             sheet.autoSizeColumn(4);
-            
+
+            // Configurar el zoom de la hoja
             sheet.setZoom(150);
+
+            // Configurar el nombre y la ubicación del archivo Excel
             String fileName = "productos";
             String home = System.getProperty("user.home");
             File file = new File(home + "/Downloads/" + fileName + ".xlsx");
+
+            // Guardar el archivo Excel
             FileOutputStream fileOut = new FileOutputStream(file);
             book.write(fileOut);
             fileOut.close();
+
+            // Abrir el archivo Excel con el visor predeterminado
             Desktop.getDesktop().open(file);
+
+            // Mostrar un mensaje de éxito al usuario
             JOptionPane.showMessageDialog(null, "Reporte Generado");
- 
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         }
- 
+
     }
 }
