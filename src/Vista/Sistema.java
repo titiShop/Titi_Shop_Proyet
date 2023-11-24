@@ -76,7 +76,7 @@ public class Sistema extends javax.swing.JFrame {
     
      public void ListarProductos() {
         List<Productos> ListarPro = proDao.ListarProductos();
-        modelo = (DefaultTableModel) tableproveedor.getModel();
+        modelo = (DefaultTableModel) tableProducto.getModel();
         Object[] ob = new Object[6];
         for (int i = 0; i < ListarPro.size(); i++) {
             ob[0] = ListarPro.get(i).getId();
@@ -860,6 +860,11 @@ public class Sistema extends javax.swing.JFrame {
                 "Id", "CODIGO", "DESCRIPCION", "PROVEEDOR", "STOCK", "PRECIO"
             }
         ));
+        tableProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProductoMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tableProducto);
         if (tableProducto.getColumnModel().getColumnCount() > 0) {
             tableProducto.getColumnModel().getColumn(0).setPreferredWidth(20);
@@ -889,6 +894,11 @@ public class Sistema extends javax.swing.JFrame {
         });
 
         btnEliminarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        btnEliminarPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1377,6 +1387,34 @@ public class Sistema extends javax.swing.JFrame {
         Excel.reporte();
     }//GEN-LAST:event_btnExcelProActionPerformed
 
+    private void tableProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductoMouseClicked
+        // TODO add your handling code here:
+        int fila = tableProducto.rowAtPoint(evt.getPoint());
+        txtIdPro.setText(tableProducto.getValueAt(fila, 0).toString());
+        txtCodigoPro.setText(tableProducto.getValueAt(fila, 1).toString());
+        txtDesPro.setText(tableProducto.getValueAt(fila, 2).toString());
+        cbxProveedorPro.setSelectedItem(tableProducto.getValueAt(fila, 3).toString());
+        txtCantPro.setText(tableProducto.getValueAt(fila, 4).toString());
+        txtPrecPro.setText(tableProducto.getValueAt(fila, 5).toString());
+
+    }//GEN-LAST:event_tableProductoMouseClicked
+
+    private void btnEliminarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProActionPerformed
+        // TODO add your handling code here:
+         if (!"".equals(txtIdPro.getText())) {
+            int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar ");
+            if (pregunta == 0) {
+                int id = Integer.parseInt(txtIdPro.getText());
+                proDao.EliminarProductos(id);
+                JOptionPane.showConfirmDialog(null, "Cliente eliminado");
+
+                LimpiarTable();
+                LimpiarProductos();
+                ListarProductos();
+            }
+        }
+    }//GEN-LAST:event_btnEliminarProActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1542,4 +1580,13 @@ private void LimpiarCliente() {
         txtDireccionProveedor.setText("");
         txtRazonProveedor.setText("");
     }
+     private void LimpiarProductos() {
+        txtIdPro.setText("");
+        txtCodigoPro.setText("");
+        cbxProveedorPro.setSelectedItem("null");
+        txtDesPro.setText("");
+        txtCantPro.setText("");
+        txtPrecPro.setText("");
+    }
 }
+

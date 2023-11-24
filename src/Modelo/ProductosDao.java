@@ -74,7 +74,7 @@ public class ProductosDao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Productos pro = new Productos();
-                pro.setId(rs.getString("id"));
+                pro.setId(rs.getInt("id"));
                 pro.setCodigo(rs.getString("codigo"));
                 pro.setNombre(rs.getString("nombre"));
                 pro.setProveedor(rs.getString("Proveedor"));
@@ -86,6 +86,25 @@ public class ProductosDao {
             System.out.println(e.toString());
         }
         return Listapro;
+    }
+    
+     public boolean EliminarProductos(int id) {
+        String sql = "DELETE FROM productos WHERE id = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.toString());
+            }
+        }
     }
     
 }
