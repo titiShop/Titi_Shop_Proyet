@@ -24,7 +24,7 @@ public class ClienteDao {
             ps = con.prepareStatement(sql);
             ps.setInt(1, cl.getCC());
             ps.setString(2, cl.getNombre());
-            ps.setString(3, cl.getTelefono());
+            ps.setLong(3, cl.getTelefono());
             ps.setString(4, cl.getDireccion());
             ps.setString(5, cl.getRazonSocial());
             ps.execute();
@@ -55,7 +55,7 @@ public class ClienteDao {
                 cl.setId(rs.getInt("id"));
                 cl.setCC(rs.getInt("cc"));
                 cl.setNombre(rs.getString("nombre"));
-                cl.setTelefono(rs.getString("telefono"));
+                cl.setTelefono(rs.getInt("telefono"));
                 cl.setDireccion(rs.getString("direccion"));
                 cl.setRazonSocial(rs.getString("razonSocial"));
                 ListaCl.add(cl);
@@ -95,7 +95,7 @@ public class ClienteDao {
             ps = con.prepareStatement(sql);
             ps.setInt(1, cl.getCC());
             ps.setString(2, cl.getNombre());
-            ps.setString(3, cl.getTelefono());
+            ps.setInt(3, cl.getTelefono());
             ps.setString(4, cl.getDireccion());
             ps.setString(5, cl.getRazonSocial());
             ps.setInt(6, cl.getId());
