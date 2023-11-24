@@ -44,7 +44,7 @@ public class Excel {
 
         try {
             // Leer la imagen del logo desde el archivo
-            InputStream is = new FileInputStream("src/img/logo.png");
+            InputStream is = new FileInputStream("src/imgenes/logo2.png");
             byte[] bytes = IOUtils.toByteArray(is);
             int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
             is.close();
@@ -78,7 +78,7 @@ public class Excel {
             sheet.addMergedRegion(new CellRangeAddress(1, 2, 1, 3));
 
             // Cabecera de la tabla
-            String[] cabecera = new String[]{"Código", "Nombre", "Precio", "Stock"};
+            String[] cabecera = new String[]{"Código", "Nombre", "Precio", "Existencias"};
 
             // Estilo para la cabecera
             CellStyle headerStyle = book.createCellStyle();
