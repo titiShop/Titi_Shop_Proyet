@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.Connection; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComboBox;
 
 /**
@@ -60,6 +62,30 @@ public class ProductosDao {
             System.out.println(e.toString());
         }
     
+    }
+    
+    public List ListarProductos() {
+        List<Productos> Listapro = new ArrayList();
+        String sql = "SELECT * FROM productos";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeQuery();
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Productos pro = new Productos();
+                pro.setId(rs.getString("id"));
+                pro.setCodigo(rs.getString("codigo"));
+                pro.setNombre(rs.getString("nombre"));
+                pro.setProveedor(rs.getString("Proveedor"));
+                pro.setStock(rs.getInt("stock"));
+                pro.setPrecio(rs.getDouble("precio"));
+                Listapro.add(pro);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return Listapro;
     }
     
 }
