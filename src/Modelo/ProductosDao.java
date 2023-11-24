@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.Connection; 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComboBox;
 
 /**
@@ -62,6 +64,7 @@ public class ProductosDao {
     
     }
     
+<<<<<<< HEAD
     public Productos BuscarPro(String cod){
         Productos producto = new Productos();
         String sql = "SELECT * FROM productos WHERE codigo ==?";
@@ -74,12 +77,55 @@ public class ProductosDao {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setStock(rs.getInt("stock"));
+=======
+    public List ListarProductos() {
+        List<Productos> Listapro = new ArrayList();
+        String sql = "SELECT * FROM productos";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeQuery();
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Productos pro = new Productos();
+                pro.setId(rs.getInt("id"));
+                pro.setCodigo(rs.getString("codigo"));
+                pro.setNombre(rs.getString("nombre"));
+                pro.setProveedor(rs.getString("Proveedor"));
+                pro.setStock(rs.getInt("stock"));
+                pro.setPrecio(rs.getDouble("precio"));
+                Listapro.add(pro);
+>>>>>>> 23ae632b1feff1990f593b3e90e70c9fd948e841
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
+<<<<<<< HEAD
         return producto;
     } 
+=======
+        return Listapro;
+    }
+    
+     public boolean EliminarProductos(int id) {
+        String sql = "DELETE FROM productos WHERE id = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.toString());
+            }
+        }
+    }
+>>>>>>> 23ae632b1feff1990f593b3e90e70c9fd948e841
     
 }
   

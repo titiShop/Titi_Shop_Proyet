@@ -6,7 +6,7 @@ package Modelo;
  * @author aleiz
  */
 public class Productos {
-    private String id;
+    private int id;
    private String codigo;
     private String nombre;
     private String proveedor;
@@ -16,7 +16,7 @@ public class Productos {
     public Productos () {
     }
 
-    public Productos(String id, String codigo, String nombre, String proveedor, int stock, double precio) {
+    public Productos(int id, String codigo, String nombre, String proveedor, int stock, double precio) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -25,11 +25,11 @@ public class Productos {
         this.precio = precio;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
