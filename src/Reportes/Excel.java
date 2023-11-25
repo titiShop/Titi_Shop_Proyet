@@ -44,7 +44,7 @@ public class Excel {
 
         try {
             // Leer la imagen del logo desde el archivo
-            InputStream is = new FileInputStream("src/imagenes/logo.png");
+            InputStream is = new FileInputStream("src/imagenes/logo2.png");
             byte[] bytes = IOUtils.toByteArray(is);
             int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
             is.close();
