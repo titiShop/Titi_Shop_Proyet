@@ -1501,7 +1501,7 @@ public class Sistema extends javax.swing.JFrame {
                     modelo = (DefaultTableModel) TableVentas.getModel();
                     for (int i = 0; i < TableVentas.getRowCount(); i++) {
                         if (TableVentas.getValueAt(i, 1).equals(txtDescripcionVenta.getText())) {
-                            JOptionPane.showMessageDialog(null, "El producto ya se registro con exito");
+                            JOptionPane.showMessageDialog(null, "El producto se registro con exito");
                             return;
                         }
                         
