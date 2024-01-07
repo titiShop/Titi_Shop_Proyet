@@ -5,7 +5,7 @@
             <url>src/Vista/Sistema.java</url>
             <bookmark id="1">
                 <name/>
-                <line>1248</line>
+                <line>1252</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,9 +13,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/aleiz/OneDrive/Documentos/NetBeansProjects/Titi_Shop_Proyet/src/Vista/Sistema.java</file>
-            <file>file:/C:/Users/aleiz/OneDrive/Documentos/NetBeansProjects/Titi_Shop_Proyet/src/Modelo/ProveedorDao.java</file>
-            <file>file:/C:/Users/aleiz/OneDrive/Documentos/NetBeansProjects/Titi_Shop_Proyet/src/Modelo/ProductosDao.java</file>
-            <file>file:/C:/Users/aleiz/OneDrive/Documentos/NetBeansProjects/Titi_Shop_Proyet/</file>
         </group>
     </open-files>
 </project-private>

@@ -1,4 +1,4 @@
-package Vista;
+ package Vista;
 
 import Modelo.Cliente;
 import Modelo.ClienteDao;
@@ -374,6 +374,17 @@ public class Sistema extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel9.setText("NOMBRE ");
+
+        txtCCventa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCCventaActionPerformed(evt);
+            }
+        });
+        txtCCventa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCCventaKeyPressed(evt);
+            }
+        });
 
         txtNombreClienteventa.setEditable(false);
 
@@ -1158,6 +1169,10 @@ public class Sistema extends javax.swing.JFrame {
 
     private void btnEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaActionPerformed
         // TODO add your handling code here:
+        modelo = (DefaultTableModel) TableVentas.getModel();
+        modelo.removeRow(TableVentas.getSelectedRow());
+        Totalpagar();
+        txtCodigoVenta.requestFocus();
     }//GEN-LAST:event_btnEliminarVentaActionPerformed
 
     private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
@@ -1541,6 +1556,29 @@ public class Sistema extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_txtCantidadVentaKeyPressed
+
+    private void txtCCventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCCventaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCCventaActionPerformed
+
+    private void txtCCventaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCCventaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()== KeyEvent.VK_ENTER){
+            if (!"".equals(txtCCventa.getText()));{
+                int cc =Integer.parseInt(txtCCventa.getText());
+                cl = client.Buscarcliente(cc);
+                if (cl.getNombre() !=null) {
+                    txtNombreCliente.setText(""+cl.getNombre());
+                    txtTtelefonoClienteventa.setText(""+cl.getTelefono());
+                    txtDireccionClienteventa.setText(""+cl.getDireccion());
+                    txtRazonClienteventa.setText(""+cl.getRazonSocial());
+                
+            } else{
+                    txtCCventa.getText();
+                JOptionPane.showMessageDialog(null, "El cliente no existe mi so");}
+                        }
+        }
+    }//GEN-LAST:event_txtCCventaKeyPressed
 
     /**
      * @param args the command line arguments
