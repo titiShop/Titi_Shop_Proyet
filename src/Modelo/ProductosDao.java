@@ -106,51 +106,6 @@ public class ProductosDao {
             }
         }
     }
-     
-      public boolean ModificarProductos(Productos pro) {
-
-        String sql = "UPDATE PRODUCTOS SET codigo=?, nombre=?, proveedor=?, stock=?, precio=? WHERE id=? ";
-        try {
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, pro.getCodigo());
-            ps.setString(2, pro.getNombre());
-            ps.setString(3, pro.getProveedor());
-            ps.setInt(4, pro.getStock());
-            ps.setDouble(5, pro.getPrecio());
-            ps.setInt(6, pro.getId());
-            ps.execute();
-            return true;
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-            return false;
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
-        }
-    }
-      
-       public Productos BuscarPro(String cod){
-        Productos producto = new Productos();
-        String sql = "SELECT * FROM productos WHERE codigo =?";
-        try {
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, cod);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                producto.setNombre(rs.getString("nombre"));
-                producto.setPrecio(rs.getDouble("precio"));
-                producto.setStock(rs.getInt("stock"));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-        }
-        return producto;
-    }
     
 }
   
