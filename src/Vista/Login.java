@@ -21,7 +21,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(this);
-        this.pintarImagen(this.lblLogo,"src/Imagenes/logo2.png");
+        this.pintarImagen(this.lblLogo,"Imagenes/logo.png");
     }
     public void validar (){
         String correo = txtCorreo.getText();
