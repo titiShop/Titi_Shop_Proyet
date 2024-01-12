@@ -7,7 +7,7 @@ public class Cliente {
     private int id;
     private int CC;
     private String nombre;
-    private String telefono;
+    private int telefono;
     private String direccion;
     private String razonSocial;
 
@@ -16,7 +16,7 @@ public class Cliente {
     }
 
     // Constructor con parámetros para inicializar todos los atributos
-    public Cliente(int id, int CC, String nombre, String telefono, String direccion, String razonSocial) {
+    public Cliente(int id, int CC, String nombre, int telefono, String direccion, String razonSocial) {
         this.id = id;
         this.CC = CC;
         this.nombre = nombre;
@@ -38,7 +38,7 @@ public class Cliente {
         return nombre;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
@@ -63,7 +63,7 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 

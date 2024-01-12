@@ -19,9 +19,9 @@ public class ProveedorDao {
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, pr.getNit());
+            ps.setInt(1, pr.getNit());
             ps.setString(2, pr.getNombre());
-            ps.setString(3, pr.getTelefono());
+            ps.setInt(3, pr.getTelefono());
             ps.setString(4, pr.getDireccion());
             ps.setString(5, pr.getRazonSocial());
             ps.execute();
@@ -48,9 +48,9 @@ public class ProveedorDao {
             while (rs.next()) {
                 Proveedor pr = new Proveedor();
                 pr.setId(rs.getInt("id"));
-                pr.setNit(rs.getString("nit"));
+                pr.setNit(rs.getInt("nit"));
                 pr.setNombre(rs.getString("nombre"));
-                pr.setTelefono(rs.getString("telefono"));
+                pr.setTelefono(rs.getInt("telefono"));
                 pr.setDireccion(rs.getString("direccion"));
                 pr.setRazonSocial(rs.getString("razonSocial"));
                 Listapr.add(pr);
@@ -87,9 +87,9 @@ public class ProveedorDao {
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, pr.getNit());
+            ps.setInt(1, pr.getNit());
             ps.setString(2, pr.getNombre());
-            ps.setString(3, pr.getTelefono());
+            ps.setInt(3, pr.getTelefono());
             ps.setString(4, pr.getDireccion());
             ps.setString(5, pr.getRazonSocial());
             ps.setInt(6, pr.getId());
@@ -106,8 +106,4 @@ public class ProveedorDao {
             }
         }
     }
-    
-    
-
 }
-
